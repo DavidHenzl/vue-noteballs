@@ -23,6 +23,7 @@
 			class="input"
 			type="text"
 			placeholder="Do you love noteballs?"
+			maxlength="50"
 			v-autofocus
 		/>
 	</div>
@@ -50,7 +51,7 @@
 /*
 	watch characters
 */
-	useWatchCharacters(loveNoteballs)
+	useWatchCharacters(loveNoteballs, 50)
 
 
 </script>
