@@ -1,23 +1,34 @@
+<!-- eslint-disable vue/no-mutating-props -->
 <template>
-	<div class="card has-background-success-dark p-4 mb-5">
-			<div class="field">
-				<div class="control">
-					<textarea
-						v-model="modelValue"
-						@input="$emit('update:modelValue', props.modelValue)"
-						class="textarea"
-						placeholder="Add a new note"
-						ref="textareaRef"
-					/>
-				</div>
-			</div>
+	<div
+		class="card  p-4 mb-5"
+		:class="`has-background-${ bgColor }-dark`"
+	>
+		<label
+			v-if="label"
+			class="label has-text-white"
+		>
+			{{ label }}
+		</label>
 
-			<div class="field is-grouped is-grouped-right">
-				<div class="control">
-					<slot name="buttons" />
-				</div>
+		<div class="field">
+			<div class="control">
+				<textarea
+					v-model="modelValue"
+					@input="$emit('update:modelValue', props.modelValue)"
+					class="textarea"
+					:placeholder="placeholder"
+					ref="textareaRef"
+				/>
 			</div>
 		</div>
+
+		<div class="field is-grouped is-grouped-right">
+			<div class="control">
+				<slot name="buttons" />
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup>
@@ -34,12 +45,24 @@
 		modelValue: {
 			type: String,
 			required: true
+		},
+		bgColor: {
+			type: String,
+			default: 'success'
+		},
+		placeholder: {
+			type: String,
+			default: 'Type something'
+		},
+		label: {
+			type: String,
 		}
 	})
 
 /*
 	emits
 */
+	// eslint-disable-next-line no-unused-vars
 	const emit = defineEmits(['update:modelValue'])
 
 /*
