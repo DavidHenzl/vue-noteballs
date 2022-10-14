@@ -22,7 +22,6 @@
 			:key="note.id"
 			:note="note"
 		/>
-
 		
 	</div>
 </template>
@@ -35,6 +34,7 @@
 	import SingleNote from '@/components/Notes/SingleNote.vue'
 	import AddEditNote from '@/components/Notes/AddEditNote.vue'
 	import { useStoreNotes } from '@/stores/storeNotes'
+	import { useWatchCharacters } from '@/use/useWatchCharacters'
 
 /*
 	store
@@ -52,5 +52,10 @@
 		newNote.value = ''
 		addEditNoteRef.value.focusTextarea()
 	}
+
+/*
+	watch characters
+*/
+	useWatchCharacters(newNote)
 
 </script>
