@@ -67,6 +67,12 @@
 	imports
 */
 	import { ref, reactive, computed } from 'vue'
+	import { useStoreAuth } from '@/stores/storeAuth'
+
+/*
+	store
+*/
+	const storeAuth = useStoreAuth()
 
 /*
 	register / login
@@ -97,10 +103,10 @@
 		}
 		else {
 			if (register.value) {
-				console.log('register user:', credentials);
+				storeAuth.registerUser(credentials)
 			}
 			else {
-				console.log('login user:', credentials);
+				storeAuth.loginUser(credentials)
 			}
 		}
 	}
