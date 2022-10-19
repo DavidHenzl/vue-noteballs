@@ -14,8 +14,8 @@
 		<div class="field">
 			<div class="control">
 				<textarea
-					v-model="modelValue"
-					@input="$emit('update:modelValue', props.modelValue)"
+					:value="modelValue"
+					@input="$emit('update:modelValue', $event.target.value)"
 					class="textarea"
 					:placeholder="placeholder"
 					ref="textareaRef"
@@ -44,6 +44,7 @@
 /*
 	props
 */
+	// eslint-disable-next-line no-unused-vars
 	const props = defineProps({
 		modelValue: {
 			type: String,

@@ -30,25 +30,24 @@ export const useStoreAuth = defineStore('storeAuth', {
 			console.log('register user:', credentials)
 
 			createUserWithEmailAndPassword(auth, credentials.email, credentials.password).then((userCredential) => {
+					// eslint-disable-next-line no-unused-vars
 					const user = userCredential.user
-					// console.log('user', user)
 			}).catch((error) => {
-					// console.log('error.message', error.message)
+					console.log('error.message', error.message)
 			})
 		},
 		loginUser(credentials) {
 			signInWithEmailAndPassword(auth, credentials.email, credentials.password).then((userCredential) => { 
+				// eslint-disable-next-line no-unused-vars
 				const user = userCredential.user
-				// console.log('user', user)
 			}).catch((error) => {
-				// console.log('error', error.message)
+				console.log('error', error.message)
 			})
 		},
 		logoutUser() {
 			signOut(auth).then(() => {
-				// console.log('user logged out')
 			}).catch((error) => {
-				// console.log(error.message)
+				console.log(error.message)
 			})
 		}
 	}
